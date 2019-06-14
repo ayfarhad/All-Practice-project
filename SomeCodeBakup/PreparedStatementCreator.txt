@@ -1,0 +1,31 @@
+Employee employee = jdbcTemplate.query(
+				new PreparedStatementCreator() {
+					String sql="select * from emp_tbl where name=?";
+					@Override
+					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+						PreparedStatement prepareStatement = con.prepareStatement(sql);
+						prepareStatement.setString(1, "Jsamser");
+						return prepareStatement;
+					}
+				}
+				
+				,
+				new ResultSetExtractor<Employee>() {
+					private Employee employee=null;
+					@Override
+					public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
+						if(rs.next()) {
+							 employee = new Employee();
+							employee.setEno(rs.getInt("eno"));
+							employee.setName(rs.getString("name"));
+							employee.setSalary(rs.getDouble("salary"));
+						}
+						return employee;
+					}
+				}
+		);
+		
+		System.out.println(employee.getEno());
+		System.out.println(employee.getName());
+		System.out.println(employee.getSalary());
+		

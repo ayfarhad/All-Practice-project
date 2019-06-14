@@ -1,0 +1,63 @@
+package in.embryo.SpringGetxxDemo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.jdbc.core.ResultSetExtractor;
+
+import in.embryo.entity.Employee;
+import in.embryo.util.AppUtil;
+
+public class App {
+	public static void main(String[] args) {
+		AnnotationConfigApplicationContext container = new AnnotationConfigApplicationContext(AppUtil.class);
+		JdbcTemplate jdbcTemplate = container.getBean(JdbcTemplate.class);
+		Employee employee = jdbcTemplate.query(
+				new PreparedStatementCreator() {
+					
+					@Override
+					public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+						PreparedStatement prepareStatement = con.prepareStatement("select * from emp_tbl where name=?");
+						return prepareStatement;
+					}
+				},
+				
+				new PreparedStatementSetter() {
+					
+					@Override
+					public void setValues(PreparedStatement ps) throws SQLException {
+						ps.setString(1, "Jamser");
+						
+					}
+				},
+				
+				new ResultSetExtractor<Employee>() {
+						private Employee employee=null;
+						@Override
+						public Employee extractData(ResultSet rs) throws SQLException, DataAccessException {
+							if(rs.next()) {
+								 employee = new Employee();
+								employee.setEno(rs.getInt("eno"));
+								employee.setName(rs.getString("name"));
+								employee.setSalary(rs.getDouble("salary"));
+							}
+							return employee;
+					}
+					
+				}
+		
+		);
+		
+		System.out.println(employee.getSalary());
+		
+		
+		container.close();
+	}
+}

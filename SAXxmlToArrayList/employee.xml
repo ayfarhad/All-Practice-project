@@ -1,0 +1,20 @@
+<employees>
+	<employee>
+		<eno>1</eno>
+		<name>Fariyad</name>
+		<salary>17777</salary>
+	</employee>
+	
+	<employee>
+		<eno>2</eno>
+		<name>Farhad</name>
+		<salary>22000</salary>
+	</employee>
+	
+	<employee>
+		<eno>3</eno>
+		<name>Hannnan</name>
+		<salary>300000</salary>
+	</employee>
+	
+</employees>

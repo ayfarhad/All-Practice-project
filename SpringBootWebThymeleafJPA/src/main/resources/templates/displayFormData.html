@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" />
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{er.title}">Employee Registration</title>
+
+</head>
+<body>
+
+	<div align="center">
+		<form action="#" th:action="@{/}" th:object="${employee}" >
+		<table border="1">
+			<tr>
+				<td>Eno</td>
+				<td th:text="${employee.eno}"></td>
+			</tr>
+			<tr>
+				<td>Name</td>
+				<td th:text="${employee.name}"></td>
+			</tr>
+			<tr>
+				<td>Salary</td>
+				<td th:text="${employee.salary}"></td>
+			</tr>
+			<tr>
+				<td colspan="4"><input type="submit" value="Home"></td>
+			</tr>
+		</table>
+	</form> 
+	</div>
+</body>
+</html>
