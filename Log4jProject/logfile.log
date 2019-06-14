@@ -1,0 +1,7 @@
+- This is error
+   -- 2019-02-14 22:13:15,055 [main] ERROR in.embryo.MyApp - This is warn
+   -- 2019-02-14 22:13:15,055 [main] WARN  in.embryo.MyApp - This is fatal
+   -- 2019-02-14 22:13:15,055 [main] FATAL in.embryo.MyApp - This is error
+   -- 2019-02-14 22:13:15,799 [main] ERROR in.embryo.MyApp - This is warn
+   -- 2019-02-14 22:13:15,799 [main] WARN  in.embryo.MyApp - This is fatal
+   -- 2019-02-14 22:13:15,799 [main] FATAL in.embryo.MyApp 

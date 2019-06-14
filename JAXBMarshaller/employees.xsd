@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://in.embryo/demo"
+	xmlns:tns="http://in.embryo/demo" elementFormDefault="qualified">
+
+	<element name="employees" type="tns:employeesType" />
+
+
+	<complexType name="employeesType">
+		<sequence>
+			<element name="employee" type="tns:employeeType" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+
+	<complexType name="employeeType">
+		<sequence>
+			<element name="eno" type="integer" />
+			<element name="name" type="string" />
+			<element name="salary" type="double" />
+		</sequence>
+	</complexType>
+</schema>
